@@ -21,8 +21,18 @@ function start() {
     const name = document.getElementById("name").value;
     const role = document.getElementById("role").value;
     const img = document.getElementById("image").value;
-    console.log("nome: " + name + "ruolo: " + role + "immagine: " + img);
+    const dipendente = inputDipendente(name, role, img);
+    stampaDipendente(dipendente);
 };
+function inputDipendente(name, role, img) {
+    const oggetto = {
+        'nome': name,
+        'ruolo': role,
+        'foto': img
+    }
+    return oggetto;
+
+}
 const arrayDipendenti = [
     {
         'nome': "angela Caroll",
@@ -30,14 +40,19 @@ const arrayDipendenti = [
         'foto': "img/angela-caroll-chief-editor.jpg"
     },
     {
-        'nome': "ciruzzo",
-        'ruolo': "designer",
-        'foto': "img/wayne-barnett-founder-ceo.jpg"
+        'nome': "angela lopez",
+        'ruolo': "social-media manager",
+        'foto': "img/angela-lopez-social-media-manager.jpg"
     },
     {
-        'nome': "luca",
-        'ruolo': "designer",
-        'foto': "img/wayne-barnett-founder-ceo.jpg"
+        'nome': "barbara rammos",
+        'ruolo': "graphic designer",
+        'foto': "img/barbara-ramos-graphic-designer.jpg"
+    },
+    {
+        'nome': "lorenzo",
+        'ruolo': "graphic designer",
+        'foto': "img/new-team-member-02.jpg"
     }
 ]
 function stampaDipendente(dipendente) {
@@ -52,11 +67,15 @@ function stampaDipendente(dipendente) {
     cardText.classList.add("card-text");
     const cardName = document.createElement("h3");
     const cardRuolo = document.createElement("p");
-    cardText.appendChild(cardName, cardRuolo);
-    teamCard.appendChild(divCardImage, cardText);
+    cardText.appendChild(cardName);
+    cardText.appendChild(cardRuolo);
+    teamCard.appendChild(divCardImage);
+    teamCard.appendChild(cardText);
     cardName.innerText = dipendente.nome;
     cardRuolo.innerText = dipendente.ruolo;
+    cardImage.src = dipendente.foto;
     contenitore.appendChild(teamCard);
+    console.log(teamCard);
 }
 function creazioneDipendente() {
     for (let i = 0; i < arrayDipendenti.length; i++) {
