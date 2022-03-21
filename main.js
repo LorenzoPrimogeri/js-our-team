@@ -14,9 +14,15 @@ il quale viene * inserito nell'array iniziale * e viene stampata una nuova card
 con tutte le informazioni inserite dall'utente.
  */
 const contenitore = document.getElementById("Contenitore");
-const nome = document.getElementById("Nome");
-const ruolo = document.getElementById("Ruolo");
-const immagine = document.getElementById("Immagine");
+
+const addcard = document.getElementById("addMemberButton");
+addcard.addEventListener('click', () => start());
+function start() {
+    const name = document.getElementById("name").value;
+    const role = document.getElementById("role").value;
+    const img = document.getElementById("image").value;
+    console.log("nome: " + name + "ruolo: " + role + "immagine: " + img);
+};
 const arrayDipendenti = [
     {
         'nome': "angela Caroll",
@@ -52,9 +58,10 @@ function stampaDipendente(dipendente) {
     cardRuolo.innerText = dipendente.ruolo;
     contenitore.appendChild(teamCard);
 }
-for (let i = 0; i < arrayDipendenti.length; i++) {
-    const dipendente = arrayDipendenti[i];
-    const card = stampaDipendente(dipendente);
-
-}
-
+function creazioneDipendente() {
+    for (let i = 0; i < arrayDipendenti.length; i++) {
+        const dipendente = arrayDipendenti[i];
+        stampaDipendente(dipendente);
+    }
+};
+creazioneDipendente();
